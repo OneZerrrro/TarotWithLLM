@@ -1,0 +1,10 @@
+__pycache__/
+venv/
+node_modules/
+Library/
+Temp/
+*.log
+*.tmp
+*.zip
+setting.json
+.vscode/

@@ -1,0 +1,7 @@
+{
+    "cardPath": "cards.json",
+    "meaningPath": "meanings.json",
+    "useLLM": true,
+    "modelName": "qwen/qwen3-4b-2507",
+    "fastMode": false
+}
