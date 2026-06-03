@@ -14,6 +14,8 @@ def load_json() -> tuple:
     use_llm = settings.get("useLLM", False)
     if use_llm:
         model_name = settings.get("modelName", "qwen/qwen3-4b-2507")
+    else:
+        model_name = None
     if not card_path or not meaning_path:
         print("Error: 未找到有效的cardPath或meaningPath")
         return None, None, None, None, None
@@ -103,7 +105,7 @@ def main():
     if cards is None or meanings is None:
         return
     # print("成功载入牌面和含义数据！")
-    print("您在追寻着什么：")
+    print("您在寻找一个问题的答案，试着向宇宙提出它吧：", end="")
     question = input()
     if not fast_mode:
         print(f"您在寻觅它的答案：“{question}”，希望继续前进吗？（y/n）", end="")
@@ -185,6 +187,10 @@ def main():
             max_tokens=1500
         )
         print(response.choices[0].message.content)
+    else:
+        print("世界给予了你一些启示：")
+        for i in range(3):
+            print(f"[{positions[i]}]{revealed_cards[i]}（{'正位' if revealed_orients[i] == 0 else '逆位'}）：{ '、'.join(reveal_keywords[i]) }")
 
 if __name__ == "__main__":
     main()
